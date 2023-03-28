@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -40,8 +41,9 @@ class Person {
     protected:
         string firstName;
         string lastName;
+        int age;
     public:
-        Person(string firstName, string lastName) : firstName(firstName),lastName(lastName){}
+        Person(string firstName, string lastName, int age) : firstName(firstName), lastName(lastName),age(age){}
         virtual string getFullName() const = 0;
 };
 
@@ -49,9 +51,10 @@ class Lecturer : public Person {
     private:
         Subject* subject;
         string chapter;
+        int age;
     public:
-        Lecturer(string firstName, string lastName, Subject* subject, string chapter) 
-            : Person(firstName,lastName), subject(subject),chapter(chapter){}
+        Lecturer(string firstName, string lastName, Subject* subject, string chapter, int age) 
+            : Person(firstName,lastName,age), subject(subject),chapter(chapter),age(age){}
         string getFullName() const override{
             return firstName + " " + lastName;
         }
@@ -60,6 +63,9 @@ class Lecturer : public Person {
         }
         string getChapter() const {
             return chapter;
+        }
+        int getAge() {
+            return age;
         }
         
         void teach() const {
@@ -75,8 +81,9 @@ class Student : public Person {
         string className;
         int quizScore;
         string level;
+        int age;
     public:
-        Student(string firstName, string lastName, Subject* subject, char section, string className, int quizScore, string level) : Person(firstName, lastName), subject(subject), section(section), className(className), quizScore(quizScore),level(level) {}
+        Student(string firstName, string lastName, Subject* subject, char section, string className, int quizScore, string level, int age) : Person(firstName, lastName,age), subject(subject), section(section), className(className), quizScore(quizScore),level(level),age(age) {}
 
         string getFullName() const override {
             return firstName + " " + lastName;
@@ -90,6 +97,9 @@ class Student : public Person {
         string getClassName() const {
             return className;
         }
+        int getAge() {
+            return age;
+        }
         int getQuizScore() const {
             return quizScore;
         }
@@ -97,7 +107,7 @@ class Student : public Person {
             return level;
         }
         void attendClass() const {
-            cout << getFullName() << " is attending " << getSubjectName() << " class  " << className<< "in section " << section << " , with current quiz score of: " << quizScore << " His current Level is " << level << '\n';
+            cout << getFullName() << " is - " << age << " years old. " << "  is attending " << getSubjectName() << " class  " << className<< "in section " << section << " , with current quiz score of: " << quizScore << " His current Level is " << level << '\n';
         }
 };
 
@@ -107,11 +117,11 @@ int main() {
     Subject* mobileSubject = new Mobile("Mobile Developement and its trickstery ! ");
     
 
-    Lecturer* webLecturer = new Lecturer("Nika", "Nikadze", webSubject, "Chapter 1");
-    Lecturer* mobileLecturer = new Lecturer("Teo", "Teodze", mobileSubject, "Chapter 4");
+    Lecturer* webLecturer = new Lecturer("Nika", "Nikadze", webSubject, "Chapter 1",25);
+    Lecturer* mobileLecturer = new Lecturer("Teo", "Teodze", mobileSubject, "Chapter 4",29);
     
-    Student* webStudent = new Student("Iakob", "iakobishvili", webSubject,'C'," Web-Development Course ", 500, "Code-God ");
-    Student* mobileStudent = new Student("Valeri", "Valeriani", mobileSubject,'B'," Front-End-Developement Course ", 100, " ROOKIE");
+    Student* webStudent = new Student("Iakob", "iakobishvili", webSubject,'C'," Web-Development Course ", 500, "Code-God ",18);
+    Student* mobileStudent = new Student("Valeri", "Valeriani", mobileSubject,'B'," Front-End-Developement Course ", 100, " ROOKIE", 20);
 
     webLecturer->teach();
     mobileLecturer->teach();
