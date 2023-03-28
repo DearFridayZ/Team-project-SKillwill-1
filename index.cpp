@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <ctime>
 
 using namespace std;
 
@@ -82,8 +81,11 @@ class Student : public Person {
         int quizScore;
         string level;
         int age;
+        int courseDuration;
+        string startDate;
     public:
-        Student(string firstName, string lastName, Subject* subject, char section, string className, int quizScore, string level, int age) : Person(firstName, lastName,age), subject(subject), section(section), className(className), quizScore(quizScore),level(level),age(age) {}
+        Student(string firstName, string lastName, Subject* subject, char section, string className, int quizScore, string level, int age, int courseDuration, string startDate) 
+            : Person(firstName, lastName, age), subject(subject), section(section), className(className), quizScore(quizScore), level(level), age(age), courseDuration(courseDuration),startDate(startDate) {}
 
         string getFullName() const override {
             return firstName + " " + lastName;
@@ -107,7 +109,7 @@ class Student : public Person {
             return level;
         }
         void attendClass() const {
-            cout << getFullName() << " is - " << age << " years old. " << "  is attending " << getSubjectName() << " class  " << className<< "in section " << section << " , with current quiz score of: " << quizScore << " His current Level is " << level << '\n';
+            cout << getFullName() << " is - " << age << " years old. " << "  is attending " << getSubjectName() << " class  " << className<< "in section " << section << " , with current quiz score of: " << quizScore << " His current Level is "  << level << " , Course Start date is: " << startDate << " ,  Course Duration: " << courseDuration << " Months. " << '\n';
         }
 };
 
@@ -120,8 +122,8 @@ int main() {
     Lecturer* webLecturer = new Lecturer("Nika", "Nikadze", webSubject, "Chapter 1",25);
     Lecturer* mobileLecturer = new Lecturer("Teo", "Teodze", mobileSubject, "Chapter 4",29);
     
-    Student* webStudent = new Student("Iakob", "iakobishvili", webSubject,'C'," Web-Development Course ", 500, "Code-God ",18);
-    Student* mobileStudent = new Student("Valeri", "Valeriani", mobileSubject,'B'," Front-End-Developement Course ", 100, " ROOKIE", 20);
+    Student* webStudent = new Student("Iakob", "iakobishvili", webSubject,'C'," Web-Development Course ", 500, "Code-God ",18, 3, "03-10-2023");
+    Student* mobileStudent = new Student("Valeri", "Valeriani", mobileSubject,'B'," Front-End-Developement Course ", 100, " ROOKIE", 20, 8, "12-5-2022 " );
 
     webLecturer->teach();
     mobileLecturer->teach();
