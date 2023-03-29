@@ -68,7 +68,7 @@ class Lecturer : public Person {
         }
         
         void teach() const {
-            cout << getFullName() << " is teaching: " << getSubjectName() << "'\n";
+            cout << getFullName() << " is teaching: " << getSubjectName() << " via Zoom meeting " << "'\n";
         }
     
 };
@@ -109,7 +109,7 @@ class Student : public Person {
             return level;
         }
         void attendClass() const {
-            cout << getFullName() << " is - " << age << " years old. " << "  is attending " << getSubjectName() << " class  " << className<< "in section " << section << " , with current quiz score of: " << quizScore << " His current Level is "  << level << ", Course Start date is: " << startDate << " ,  Course Duration: " << courseDuration << " Months. " << '\n';
+            cout << getFullName() << " is - " << age << " years old. " << "  is attending " << getSubjectName() << " class  " << className<< "in section " << section << " , with current quiz score of: " << quizScore << " His current Level is "  << level << ", Course Start date is: " << startDate << " ,  Course Duration: " << courseDuration << " Months. " << '\n' ;
         }
 };
 
