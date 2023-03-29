@@ -1,3 +1,3 @@
 # Team-project-SKillwill-1
 
-this Code is a Project from SkillWill Academy, 2 people working on it . 
+this Code is a Project from SkillWill Academy, people working on it - me and my inner demons. :) 
